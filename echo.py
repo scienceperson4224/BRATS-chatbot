@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = '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'
+openai.api_key = ''
 
 
 def explain(target="Verizon mobile plans", context="Old man that needs a cell plan", max=150, temp=0.9, simplicity=2):

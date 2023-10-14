@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from chat import get_response
+from echo import explain
 
 app = Flask(__name__)
 
@@ -11,9 +11,9 @@ def index_get():
 def predict():
     text = request.get_json().get("message")
     # check if text is valid
-    response = get_response(text)
+    response = explain(target=text, context="Chat user message")
     message = {"answer": response}
     return jsonify(message)
 
-if __name__ == "main":
+if __name__ == "__main__":
     app.run(debug=True)
