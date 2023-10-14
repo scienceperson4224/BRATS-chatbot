@@ -11,16 +11,16 @@ class Chatbox {
     }
 
     display() {
-        const {openButton, chatBox, sendButton} = this.args;
+  const { openButton, sendButton } = this.args;
+    const chatBox = document.querySelector(".chatbox");
+    openButton.addEventListener("click", () => this.toggleState(chatBox));
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox))
+    sendButton.addEventListener("click", () => this.onSendButton(chatBox));
 
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
-
-        const node = chatBox.querySelector('input');
-        node.addEventListener("keyup", ({key}) => {
-            if (key === "Enter") {
-                this.onSendButton(chatBox)
+    const inputNode = chatBox.querySelector("input");
+    inputNode.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        this.onSendButton(chatBox);
             }
         })
     }
